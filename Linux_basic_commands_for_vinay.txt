@@ -1,0 +1,157 @@
+login to server 
+username : vagraant 
+passwd: xxxxxx
+
+for root login 
+$sudo -i
+ 
+----------------- listing file and dirctories ------
+
+[root@hostname ~]# ---> shell prompt   
+
+#pwd 
+
+#ls -lrtha 
+# ls -l  filename 
+# ls -l dir (# it list the files and subdir inside the dir) 
+#ls -ld dir (# it shows the info of the dir) 
+#ls -i filename #comment# here -i shows inode number of the file
+#
+------------------------------User login related commands-----------------
+# who (#show the currect login users) --> this report from the /var/run/utmp 
+
+[root@server ~]# who
+vagrant  pts/0        2022-08-10 18:52 (10.0.2.2)
+
+vagrant  pts/1        2022-08-10 19:01 (192.168.29.21)
+vagrant  pts/2        2022-08-10 21:42 (192.168.29.76)
+
+# Who am i (# currect runing user)
+
+# w(what) ( # same as who command and also shows more details like uptime, load avg,...)
+
+#whoami  
+
+# id ( it shows the information about UID (username) GID (group) secondory group SElinux context) 
+
+ 
+#last --> used to successful user login attempts and system reboots ---> this report is from the /var/log/wtmp 
+
+# last reboot --this shows only last successful system reboot attemps 
+
+# lastb --> user login attempts fails --> report from /var/log/btmp 
+
+#lastlog --> Show the recently login users (connecting to tty terminal and swich user)--> report from the /var/log/lastlog
+
+------------------------------------ssh login related issue and troubleshooting ------------------------------------
+
+sshd[3167]: pam_succeed_if(sshd:auth): requirement "uid >= 1000" not met by user "root" Root login to remote server in ssh fails with the above message in /var/log/secure. To resolve the issue, ensure that "permit root login" is set to "yes" in sshd configuration file.
+
+
+
+
+
+ 
+
+
+ 
+-------------------------create directories-----------------------    
+# mkdir dir-name
+#cd dir_name 
+# ls -ld dir_name (it show the dir permision owner groups others and so on ) 
+# ls -R dir_name (    
+#Absolute path #(cd /root/dir/) 
+#relative path  # (cd ..  , cd ../.. ,cd  ~ , cd  ) 
+-------------------------create files ---------------------
+#touch file-name ( it creates the empty file) 
+#touch file{0..10} (it creates the 10 empty files like file0 file1 file2 .. file10 ) 
+
+# cat > file-name --> to create a file and save some data 
+# cat >> file-name --> to appent some data into an exisiting file 
+
+# Vi file-name 
+
+Vi modes (command mode , insertion mode, last line mode) 
+
+command mode (used to execute the vi commands like /sring, :set nu, g ,G,o )  --> insertion mode press i (to write or edit the content in the file) 
+
+insertion mode --> last line mode (press Esc :wq,q,wq!,q!) 
+
+---------------------------some importent commands ------------------
+# who 
+#whoami 
+#w 
+#which command (to find the absolute path of the command) 
+#tty (# to check currect working terminal) 
+#lastlog 
+#last 
+#lastb 
+#logname 
+#hostname 
+#hostname -f 
+#lastlogin 
+# last reboot 
+
+---------------------------troubleshooting commands-------------------
+#dmesg 
+#top 
+#iostat 
+#vmstat
+#iotop 
+#sar -q, sar -p 
+#ps 
+
+#dmidecode -t1 
+#nproc, /proc/cpuinfo 
+#free -g, -m, -h, /proc/meminfo 
+#
+
+--------------------------to check fileystem usage command -----------------
+#df -HT , df -i 
+#du -sch /root/* 
+------------------------------------------------------
+# su - root 
+# su - 
+#pwd
+#exit  
+# su 
+#pwd 
+
+
+
+--------------------------------------date and time ----------------
+
+# date 
+# date +%Y-%m-%d 
+
+#timedatectl 
+#timedatectl list-timezones 
+#timedatectl set-time "yyyy-mm-dd hh:mm:ss" (# this cmd only works when the auto sync is not enabled) 
+# timedatectl set-timezone Asia/Kolkata 
+
+To sync time and date with ntp servers we need to install ntp 
+
+# yum install ntp
+#systemctl status ntpd 
+# systemctl start ntp 
+#systemctl enable ntp
+
+
+-------------------------------file system -----------------
+/ 
+/root 
+/home 
+/var
+/etc 
+/proc 
+/opt
+/bin 
+/lib   
+/tmp 
+/run 
+/dev 
+/sys 
+ 
+----------------------------- 
+
+
